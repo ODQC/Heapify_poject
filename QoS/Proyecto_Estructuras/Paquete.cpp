@@ -1,7 +1,8 @@
 #include "Paquete.h"
 
-Paquete::Paquete(std::string pri, std::string serv, std::string des, int port)
+Paquete::Paquete(int idP, std::string pri, std::string serv, std::string des, int port)
 {
+	id = idP;
 	prioroty = pri;
 	service = serv;
 	description = des;
@@ -12,6 +13,7 @@ Paquete::Paquete(std::string pri, std::string serv, std::string des, int port)
 
 Paquete::Paquete()
 {
+	id = 0;
 	prioroty = "";
 	service = "";
 	description = "";
@@ -32,6 +34,11 @@ std::string Paquete::getService()
 std::string Paquete::getDescription()
 {
 	return description;
+}
+
+int Paquete::getId()
+{
+	return id;
 }
 
 int Paquete::getNumPort()
@@ -57,6 +64,22 @@ void Paquete::setDescription(std::string des)
 void Paquete::setNumPort(int port)
 {
 	numPort = port;
+}
+
+void Paquete::setId(int idP)
+{
+	id = idP;
+}
+
+std::string Paquete::toStringPaquete()
+{
+	std::stringstream x;
+	x << "Id de Paquete: " << id << std::endl;
+	x << "Prioridad: " << prioroty << std::endl;
+	x <<"Nombre del Servicio: " << service << std::endl;
+	x << "Descripcion del Servicio: " << service << std::endl;
+	x << "Numero de puerto UDP-TCP: " <<numPort << std::endl;	
+	return x.str();
 }
 
 Paquete::~Paquete()

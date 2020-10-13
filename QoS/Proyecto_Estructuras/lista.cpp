@@ -6,7 +6,7 @@ lista::lista(): plista(NULL)
 }
 
 bool lista::Actual() { return plista != NULL; }
-    int lista::ValorActual() { return plista->valor; }
+    Paquete lista::ValorActual() { return plista->valor; }
 bool lista::ListaVacia() { return plista == NULL; }
 
 lista::~lista()
@@ -21,13 +21,13 @@ lista::~lista()
    }
 }
 
-void lista::Insertar(int v)
+void lista::Insertar(Paquete v)
 {
    pnodo nuevo;
 
    Primero();
    // Si la lista está vacía
-   if(ListaVacia() || plista->valor > v) {
+   if(ListaVacia() || plista->valor.getId() > v.getId()) {
       // Asignamos a lista un nuevo nodo de valor v y
       // cuyo siguiente elemento es la lista actual
       nuevo = new nodo(v, plista);
@@ -38,7 +38,7 @@ void lista::Insertar(int v)
       // Buscar el nodo de valor menor a v
       // Avanzamos hasta el último elemento o hasta que el siguiente tenga
       // un valor mayor que v
-      while(plista->siguiente && plista->siguiente->valor <= v) Siguiente();
+      while(plista->siguiente && plista->siguiente->valor.getId() <= v.getId()) Siguiente();
       // Creamos un nuevo nodo después del nodo actual
       nuevo = new nodo(v, plista->siguiente, plista);
       plista->siguiente = nuevo;
@@ -46,15 +46,15 @@ void lista::Insertar(int v)
    }
 }
 
-void lista::Borrar(int v)
+void lista::Borrar(Paquete v)
 {
    pnodo nodo;
 
    nodo = plista;
-   while(nodo && nodo->valor < v) nodo = nodo->siguiente;
-   while(nodo && nodo->valor > v) nodo = nodo->anterior;
+   while(nodo && nodo->valor.getId() < v.getId()) nodo = nodo->siguiente;
+   while(nodo && nodo->valor.getId() > v.getId()) nodo = nodo->anterior;
 
-   if(!nodo || nodo->valor != v) return;
+   if(!nodo || nodo->valor.getId() != v.getId()) return;
    // Borrar el nodo
 
    if(nodo->anterior) // no es el primer elemento
@@ -64,26 +64,14 @@ void lista::Borrar(int v)
    delete nodo;
 }
 
-void lista::Mostrar(int orden)
+void lista::Mostrar(Paquete orden)
 {
-   pnodo nodo;
-   if(orden == ASCENDENTE) {
-      Primero();
-      nodo = plista;
-      while(nodo) {
-         cout << nodo->valor << "\n";
-         nodo = nodo->siguiente;
-      }
-   }
-   else {
-      Ultimo();
-      nodo = plista;
-      while(nodo) {
-         cout << nodo->valor << "\n";
-         nodo = nodo->anterior;
-      }
-   }
-   cout << endl;
+  
+}
+
+void lista::MostrarLIsta()
+{
+    
 }
 
 void lista::Siguiente()

@@ -8,16 +8,18 @@ class lista {
     lista();
     ~lista();
 
-    void Insertar(int v);
-    void Borrar(int v);
+    void Insertar(Paquete v);
+    void Borrar(Paquete v);
     bool ListaVacia();
-    void Mostrar(int);
+    void Mostrar(Paquete);
+    void MostrarLIsta();
     void Siguiente();
     void Anterior();
     void Primero();
     void Ultimo();
     bool Actual();
-    int ValorActual();
+    Paquete ValorActual();
+
 
    private:
     pnodo plista;
