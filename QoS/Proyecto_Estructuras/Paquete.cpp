@@ -1,8 +1,8 @@
 #include "Paquete.h"
 
-Paquete::Paquete(int idP, std::string pri, std::string serv, std::string des, int port)
+Paquete::Paquete(std::string pri, std::string serv, std::string des, int port)
 {
-	id = idP;
+	id = HexNumGenerator(6);
 	prioroty = pri;
 	service = serv;
 	description = des;
@@ -13,7 +13,7 @@ Paquete::Paquete(int idP, std::string pri, std::string serv, std::string des, in
 
 Paquete::Paquete()
 {
-	id = 0;
+	id = "";
 	prioroty = "";
 	service = "";
 	description = "";
@@ -36,7 +36,7 @@ std::string Paquete::getDescription()
 	return description;
 }
 
-int Paquete::getId()
+std::string Paquete::getId()
 {
 	return id;
 }
@@ -66,9 +66,25 @@ void Paquete::setNumPort(int port)
 	numPort = port;
 }
 
-void Paquete::setId(int idP)
+void Paquete::setId(std::string idP)
 {
 	id = idP;
+}
+
+
+std::string Paquete::HexNumGenerator(int length)
+{
+	char* str = (char*)malloc(25);
+	srand(time(0));
+	//hexadecimal characters
+	char hex_characters[] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F' };
+	int i;
+	for (i = 0; i < length; i++)
+	{
+		str[i] = hex_characters[rand() % 16];
+	}
+	str[length] = '\0';
+	return str;
 }
 
 std::string Paquete::toStringPaquete()

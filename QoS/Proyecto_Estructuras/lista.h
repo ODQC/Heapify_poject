@@ -11,7 +11,7 @@ class lista {
     void Insertar(Paquete v);
     void Borrar(Paquete v);
     bool ListaVacia();
-    void Mostrar(Paquete);
+    void Mostrar();
     void MostrarLIsta();
     void Siguiente();
     void Anterior();

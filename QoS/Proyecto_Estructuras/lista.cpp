@@ -64,13 +64,29 @@ void lista::Borrar(Paquete v)
    delete nodo;
 }
 
-void lista::Mostrar(Paquete orden)
+void lista::Mostrar()
 {
   
 }
 
 void lista::MostrarLIsta()
 {
+    pnodo nodo = plista;
+    if (!ListaVacia()) {
+        do {
+
+
+            std::cout << nodo->siguiente->valor.toStringPaquete();
+            std::cout << "---------------------------------\n";
+            nodo = nodo->anterior;
+        } while ((nodo != plista && nodo != nullptr));
+
+        std::cout << std::endl;
+    }
+    else
+    {
+        std::cout << "****LISTA VACIA****" << std::endl;
+    }
     
 }
 
