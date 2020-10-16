@@ -2,7 +2,7 @@
 
 Paquete::Paquete(std::string pri, std::string serv, std::string des, int port)
 {
-	id = HexNumGenerator(6);
+	id =  NumGeneratorByRange(9999, 1000);
 	prioroty = pri;
 	service = serv;
 	description = des;
@@ -13,7 +13,7 @@ Paquete::Paquete(std::string pri, std::string serv, std::string des, int port)
 
 Paquete::Paquete()
 {
-	id = "";
+	id = 0;
 	prioroty = "";
 	service = "";
 	description = "";
@@ -36,7 +36,7 @@ std::string Paquete::getDescription()
 	return description;
 }
 
-std::string Paquete::getId()
+int Paquete::getId()
 {
 	return id;
 }
@@ -66,25 +66,16 @@ void Paquete::setNumPort(int port)
 	numPort = port;
 }
 
-void Paquete::setId(std::string idP)
+void Paquete::setId(int idP)
 {
 	id = idP;
 }
 
-
-std::string Paquete::HexNumGenerator(int length)
+int  Paquete::NumGeneratorByRange(int maximum_number, int minimum_number)
 {
-	char* str = (char*)malloc(25);
 	srand(time(0));
-	//hexadecimal characters
-	char hex_characters[] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F' };
-	int i;
-	for (i = 0; i < length; i++)
-	{
-		str[i] = hex_characters[rand() % 16];
-	}
-	str[length] = '\0';
-	return str;
+	const int new_number = (rand() % (maximum_number + 1 - minimum_number)) + minimum_number;
+	return new_number;
 }
 
 std::string Paquete::toStringPaquete()
@@ -97,6 +88,8 @@ std::string Paquete::toStringPaquete()
 	x << "Numero de puerto UDP-TCP: " <<numPort << std::endl;	
 	return x.str();
 }
+
+
 
 Paquete::~Paquete()
 {

@@ -4,7 +4,7 @@
 class Heap
 {
 public:
-	void Heapify(lista);
+	void Heapify(lista*);
 	void Swap();
 	void HeapSort(lista);
 

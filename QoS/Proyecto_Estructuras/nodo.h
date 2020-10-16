@@ -7,11 +7,11 @@ using namespace std;
 
 class nodo {
    public:
-    nodo(Paquete v, nodo *sig = NULL, nodo *ant = NULL) :
+    nodo(Paquete* v, nodo *sig = NULL, nodo *ant = NULL) :
        valor(v), siguiente(sig), anterior(ant) {}
 
    private:
-    Paquete valor;
+    Paquete* valor;
     nodo *siguiente;
     nodo *anterior;
 

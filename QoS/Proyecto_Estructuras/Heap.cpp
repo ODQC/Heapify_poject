@@ -1,7 +1,8 @@
 #include "Heap.h"
 
-void Heap::Heapify(lista)
+void Heap::Heapify(lista*)
 {
+	
 }
 
 void Heap::Swap()

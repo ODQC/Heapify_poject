@@ -8,17 +8,18 @@ class lista {
     lista();
     ~lista();
 
-    void Insertar(Paquete v);
-    void Borrar(Paquete v);
+    void Insertar(Paquete* v);
+    void Borrar(int v);
     bool ListaVacia();
-    void Mostrar();
-    void MostrarLIsta();
+    void Mostrar(int orden);
     void Siguiente();
     void Anterior();
     void Primero();
     void Ultimo();
     bool Actual();
-    Paquete ValorActual();
+    Paquete* ValorActual();
+   
+    
 
 
    private:
