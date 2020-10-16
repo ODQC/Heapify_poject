@@ -37,8 +37,10 @@ void lista::HeapSort(lista)
 {
    
 }
-lista *lista::getNodo(int i)
-{
+lista *lista::getNodo(int i)//Este metodo lo que hace es que le entra un entero por parametros, que va a ser el pos,izq o der de el heapify
+{                            // y va a contar hasta el numero que le entre por medio del for, de esta manera sabremos en que nodo debe parar
+                               // y cuando llegue a ese nodo va a retornar ese nodo xD, asi fue como segun yo logre hacer el heapify,ojala y funcione
+                                   // segun la logica deberia.
     lista l;
     for (int x = 0; x <= i; x++) {
         l = l.Siguiente();
