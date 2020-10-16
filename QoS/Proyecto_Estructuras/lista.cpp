@@ -6,6 +6,58 @@ lista::lista(): plista(NULL)
 }
 
 bool lista::Actual() { return plista != NULL; }
+void lista::Heapify(int pos)
+{
+    lista *l=new lista;
+   
+    int lar = pos;
+    int izq = getIzq(pos);
+    int der = getDer(pos);
+    if (izq<size(lista) && l->getNodo(izq)->ValorActual()->getPriority()>l->getNodo(lar)->ValorActual()->getPriority()) {
+        lar = izq;
+    }
+    if (izq<size(lista) && l->getNodo(der)->ValorActual()->getPriority()>l->getNodo(lar)->ValorActual()->getPriority()) {
+        lar = der;
+    }
+    if (lar != pos) {
+        
+        l->Swap(pos,lar);
+        Heapify(list, lar);
+    }
+}
+void lista::Swap(int a,int b)
+{
+  
+    int aux;
+    aux = a;
+    a = b;
+    b = aux;
+}
+void lista::HeapSort(lista)
+{
+   
+}
+lista *lista::getNodo(int i)
+{
+    lista l;
+    for (int x = 0; x <= i; x++) {
+        l = l.Siguiente();
+    }
+    return l.ValorActual();
+}
+int lista::getIzq(int i)
+{
+    
+    return (2 * i + 1);
+}
+int lista::getRoot()
+{
+    return (i-1)/2;
+}
+int lista::getDer()
+{
+    return (2 * i + 2);
+}
 Paquete* lista::ValorActual() { return plista->valor; }
 bool lista::ListaVacia() { return plista == NULL; }
 

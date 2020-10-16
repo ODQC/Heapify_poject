@@ -17,6 +17,13 @@ class lista {
     void Primero();
     void Ultimo();
     bool Actual();
+    void Heapify(int);
+    void Swap(int,int);
+    void HeapSort(lista);
+    lista *getNodo(int);
+   int getIzq(int);
+   int getRoot();
+   int getDer();
     Paquete* ValorActual();
    
     

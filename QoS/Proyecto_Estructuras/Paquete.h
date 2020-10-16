@@ -12,19 +12,19 @@ class Paquete
 {
 private:
 	int  id;
-	std::string prioroty;
+	int prioroty;
 	std::string service;
 	std::string description;
 	int numPort;
 public:
-	Paquete(std::string pri, std::string serv, std::string des, int port);
+	Paquete(int pri, std::string serv, std::string des, int port);
 	Paquete();
-	std::string getPriority();
+	int getPriority();
 	std::string getService();
 	std::string getDescription();
 	int  getId();
 	int getNumPort();
-	void setPriority(std::string pri);
+	void setPriority(int pri);
 	void setService(std::string ser);
 	void setDescription(std::string des);
 	void setNumPort(int port);

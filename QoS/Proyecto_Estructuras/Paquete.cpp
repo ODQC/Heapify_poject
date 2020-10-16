@@ -1,6 +1,6 @@
 #include "Paquete.h"
 
-Paquete::Paquete(std::string pri, std::string serv, std::string des, int port)
+Paquete::Paquete(int pri, std::string serv, std::string des, int port)
 {
 	id =  NumGeneratorByRange(9999, 1000);
 	prioroty = pri;
@@ -46,7 +46,7 @@ int Paquete::getNumPort()
 	return numPort;
 }
 
-void Paquete::setPriority(std::string pri)
+void Paquete::setPriority(int pri)
 {
 	prioroty = pri;
 }
