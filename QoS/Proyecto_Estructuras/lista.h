@@ -11,6 +11,7 @@ class lista {
 
     void Insertar(Paquete* v);
     void Borrar(int v);
+    void BorrarPrimero();
     bool ListaVacia();
     void Mostrar(int orden);
     void Siguiente();
@@ -20,7 +21,7 @@ class lista {
     bool Actual();
     void heapify_down(pnodo actual);
     void heapify_up(pnodo actual);
-    Paquete* top();
+   
     void pop();
     int getSize();
     int getIndex(pnodo index);

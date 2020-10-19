@@ -145,6 +145,7 @@
     <ClCompile Include="Proyecto_Estructuras.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CodeGenerator.h" />
     <ClInclude Include="lista.h" />
     <ClInclude Include="nodo.h" />
     <ClInclude Include="Paquete.h" />

@@ -1,14 +1,12 @@
 #include "Paquete.h"
 
-Paquete::Paquete(int pri, std::string serv, std::string des, int port)
+Paquete::Paquete(int idP, int pri, std::string serv, std::string des, std::string port)
 {
-	id =  NumGeneratorByRange(9999, 1000);
+	id = idP;
 	prioroty = pri;
 	service = serv;
 	description = des;
 	numPort = port;
-
-
 }
 
 Paquete::Paquete()
@@ -17,7 +15,7 @@ Paquete::Paquete()
 	prioroty = 0;
 	service = "";
 	description = "";
-	numPort = 0;
+	numPort = "";
 
 }
 
@@ -41,7 +39,7 @@ int Paquete::getId()
 	return id;
 }
 
-int Paquete::getNumPort()
+std::string Paquete::getNumPort()
 {
 	return numPort;
 }
@@ -61,7 +59,7 @@ void Paquete::setDescription(std::string des)
 	description = des;
 }
 
-void Paquete::setNumPort(int port)
+void Paquete::setNumPort(std::string port)
 {
 	numPort = port;
 }
@@ -71,21 +69,16 @@ void Paquete::setId(int idP)
 	id = idP;
 }
 
-int  Paquete::NumGeneratorByRange(int maximum_number, int minimum_number)
-{
-	srand(time(0));
-	const int new_number = (rand() % (maximum_number + 1 - minimum_number)) + minimum_number;
-	return new_number;
-}
+
 
 std::string Paquete::toStringPaquete()
 {
 	std::stringstream x;
 	x << "Id de Paquete: " << id << std::endl;
 	x << "Prioridad: " << prioroty << std::endl;
-	x <<"Nombre del Servicio: " << service << std::endl;
+	x << "Nombre del Servicio: " << service << std::endl;
 	x << "Descripcion del Servicio: " << service << std::endl;
-	x << "Numero de puerto UDP-TCP: " <<numPort << std::endl;	
+	x << "Numero de puerto UDP-TCP: " << numPort << std::endl;
 	return x.str();
 }
 

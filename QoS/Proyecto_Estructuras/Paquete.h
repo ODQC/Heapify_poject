@@ -8,6 +8,7 @@
 #include <ostream>
 
 
+
 class Paquete
 {
 private:
@@ -15,21 +16,21 @@ private:
 	int prioroty;
 	std::string service;
 	std::string description;
-	int numPort;
+	std::string numPort;
+
 public:
-	Paquete(int pri, std::string serv, std::string des, int port);
+	Paquete(int id ,int pri, std::string serv, std::string des, std::string port);
 	Paquete();
 	int getPriority();
 	std::string getService();
 	std::string getDescription();
 	int  getId();
-	int getNumPort();
+	std::string getNumPort();
 	void setPriority(int pri);
 	void setService(std::string ser);
 	void setDescription(std::string des);
-	void setNumPort(int port);
+	void setNumPort(std::string port);
 	void setId(int idP);
-	int  NumGeneratorByRange(int maximum_number, int minimum_number);
 	std::string toStringPaquete();
 	~Paquete();
 
