@@ -14,14 +14,14 @@ Paquete::Paquete(int pri, std::string serv, std::string des, int port)
 Paquete::Paquete()
 {
 	id = 0;
-	prioroty = "";
+	prioroty = 0;
 	service = "";
 	description = "";
 	numPort = 0;
 
 }
 
-std::string Paquete::getPriority()
+int Paquete::getPriority()
 {
 	return prioroty;
 }

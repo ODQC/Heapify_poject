@@ -139,18 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Heap.cpp" />
     <ClCompile Include="lista.cpp" />
     <ClCompile Include="nodo.cpp" />
     <ClCompile Include="Paquete.cpp" />
     <ClCompile Include="Proyecto_Estructuras.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cola.h" />
-    <ClInclude Include="Heap.h" />
     <ClInclude Include="lista.h" />
     <ClInclude Include="nodo.h" />
-    <ClInclude Include="nodoCola.h" />
     <ClInclude Include="Paquete.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

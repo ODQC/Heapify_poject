@@ -6,60 +6,119 @@ lista::lista(): plista(NULL)
 }
 
 bool lista::Actual() { return plista != NULL; }
-void lista::Heapify(int pos)
-{
-    lista *l=new lista;
-   
-    int lar = pos;
-    int izq = getIzq(pos);
-    int der = getDer(pos);
-    if (izq<size(lista) && l->getNodo(izq)->ValorActual()->getPriority()>l->getNodo(lar)->ValorActual()->getPriority()) {
-        lar = izq;
-    }
-    if (izq<size(lista) && l->getNodo(der)->ValorActual()->getPriority()>l->getNodo(lar)->ValorActual()->getPriority()) {
-        lar = der;
-    }
-    if (lar != pos) {
-        
-        l->Swap(pos,lar);
-        Heapify(list, lar);
-    }
-}
-void lista::Swap(int a,int b)
-{
-  
-    int aux;
-    aux = a;
-    a = b;
-    b = aux;
-}
-void lista::HeapSort(lista)
+
+void lista::heapify_down(pnodo actual)
 {
    
-}
-lista *lista::getNodo(int i)//Este metodo lo que hace es que le entra un entero por parametros, que va a ser el pos,izq o der de el heapify
-{                            // y va a contar hasta el numero que le entre por medio del for, de esta manera sabremos en que nodo debe parar
-                               // y cuando llegue a ese nodo va a retornar ese nodo xD, asi fue como segun yo logre hacer el heapify,ojala y funcione
-                                   // segun la logica deberia.
-    lista l;
-    for (int x = 0; x <= i; x++) {
-        l = l.Siguiente();
+   /* if (actual->anterior->valor->getPriority() < size() && A[Izquierda] > A[i]) {
+        Mayor = Izquierda;
     }
-    return l.ValorActual();
+    if (Derecha < size() && A[Derecha] > A[Mayor]) {
+        Mayor = Derecha;
+    }
+    if (Mayor != i) {
+        swap(A[i], A[Mayor]);
+        heapify_down(Mayor);
+    }
+   */
 }
-int lista::getIzq(int i)
+
+void lista::heapify_up(pnodo actual)
 {
-    
-    return (2 * i + 1);
+   
+    if (actual->anterior->valor->getPriority() < actual->valor->getPriority())
+    {
+        swap(actual, actual->anterior);
+        heapify_up(actual->anterior);
+    }
+
 }
-int lista::getRoot()
+
+Paquete* lista::top()
 {
-    return (i-1)/2;
+    return 0;
 }
-int lista::getDer()
+
+void lista::pop()
 {
-    return (2 * i + 2);
+  /*  try {
+        if (size() == 0)
+            throw out_of_range("Vector<X>::at() : "
+                "index fuera de rango(Heap underflow)");
+        A[0] = A.back();
+        A.pop_back();
+        heapify_down(0);
+    }
+    catch (const out_of_range& oor) {
+        cout << "\n" << oor.what();
+    }*/
 }
+
+
+int lista::getSize()
+{
+    int i=0;
+    try {
+        if (ListaVacia()) {
+            return 0;
+        }
+        else {
+                pnodo nodo;
+                Primero();
+                nodo = plista;
+                while (nodo) {
+                    i++;
+                }
+                return i;
+        }
+    }
+    catch (const std::exception e)
+    {
+        std::cout << e.what();
+    }
+}
+
+int lista::getIndex(pnodo index)
+{
+    bool encontrado;
+    encontrado = false;
+    int i;
+    try {
+        if (ListaVacia()) {
+            return NULL;
+        }
+        else {
+            pnodo nodo;
+            Primero();
+            nodo = plista;
+            while (nodo) {
+                if (nodo->valor==index->valor)
+                {
+                    return i;
+                    encontrado = true;
+                    break;
+                }
+                i++;
+            }
+             if (true){
+                 return NULL;
+             }
+        }
+    }
+    catch (const std::exception e)
+    {
+        std::cout << e.what();
+    }
+}
+
+void lista::swap(pnodo a, pnodo b)
+{
+    Paquete* aux  ;
+    aux = b->valor;
+    b->valor = a->valor;
+    a->valor = aux;
+}
+
 Paquete* lista::ValorActual() { return plista->valor; }
 bool lista::ListaVacia() { return plista == NULL; }
 
@@ -96,8 +155,14 @@ void lista::Insertar(Paquete* v)
       // Creamos un nuevo nodo después del nodo actual
       nuevo = new nodo(v, plista->siguiente, plista);
       plista->siguiente = nuevo;
+      heapify_up(nuevo);
       if(nuevo->siguiente) nuevo->siguiente->anterior = nuevo;
+
    }
+   
+   
+      
+   
 }
 
 void lista::Borrar(int v)
@@ -143,24 +208,36 @@ void lista::Borrar(int v)
 
 void lista::Mostrar(int orden)
 {
-    pnodo nodo;
-    if (orden == ASCENDENTE) {
-        Primero();
-        nodo = plista;
-        while (nodo) {
-            std::cout << nodo->valor->toStringPaquete() << "\n";
-            nodo = nodo->siguiente;
+    try {
+        if (ListaVacia()) {
+            std::cout << "Lista vacia\n";
+            std::system("pause");
+        }
+        else {
+            pnodo nodo;
+            if (orden == ASCENDENTE) {
+                Primero();
+                nodo = plista;
+                while (nodo) {
+                    std::cout << nodo->valor->toStringPaquete() << "\n";
+                    nodo = nodo->siguiente;
+                }
+            }
+            else {
+                Ultimo();
+                nodo = plista;
+                while (nodo) {
+                    std::cout << nodo->valor->toStringPaquete() << "\n";
+                    nodo = nodo->anterior;
+                }
+            }
+            std::cout << "--------------------------------" << std::endl;
         }
     }
-    else {
-        Ultimo();
-        nodo = plista;
-        while (nodo) {
-            std::cout << nodo->valor->toStringPaquete() << "\n";
-            nodo = nodo->anterior;
-        }
+    catch (const std::out_of_range& e)
+    {
+        std::cout << e.what();
     }
-    cout << endl;
 }
 
 
@@ -183,4 +260,9 @@ void lista::Primero()
 void lista::Ultimo()
 {
    while(plista && plista->siguiente) plista = plista->siguiente;
+}
+void heapify_down()
+{
+   
+   
 }

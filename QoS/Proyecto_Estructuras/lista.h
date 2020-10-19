@@ -1,6 +1,7 @@
 #ifndef LISTA_H
 #define LISTA_H
 #include "nodo.h"
+#include"Paquete.h"
 #define ASCENDENTE 1
 #define DESCENDENTE 0
 class lista {
@@ -17,13 +18,14 @@ class lista {
     void Primero();
     void Ultimo();
     bool Actual();
-    void Heapify(int);
-    void Swap(int,int);
-    void HeapSort(lista);
-    lista *getNodo(int);
-   int getIzq(int);
-   int getRoot();
-   int getDer();
+    void heapify_down(pnodo actual);
+    void heapify_up(pnodo actual);
+    Paquete* top();
+    void pop();
+    int getSize();
+    int getIndex(pnodo index);
+    void swap(pnodo a, pnodo b);
+  
     Paquete* ValorActual();
    
     
